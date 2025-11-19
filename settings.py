@@ -34,13 +34,12 @@ gn_args = {
     "v8_use_external_startup_data": "false",
 }
 
-# On Linux ARM64, use system clang instead of downloaded x86_64 clang
+# On Linux ARM64, use GCC instead of downloaded x86_64 clang
 if platform.system() == "Linux" and platform.machine() == "aarch64":
-    gn_args["is_clang"] = "true"
-    gn_args["clang_base_path"] = '\\"/usr\\"'
-    gn_args["clang_use_chrome_plugins"] = "false"
+    gn_args["is_clang"] = "false"
     gn_args["treat_warnings_as_errors"] = "false"
     gn_args["use_sysroot"] = "false"
+    gn_args["use_custom_libcxx"] = "false"
 
 source_files = [
     "Exception.cpp",
