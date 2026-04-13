@@ -1,6 +1,7 @@
 ---
 name: MacOSX ARM64 build/release workflow
 on:
+  workflow_dispatch:
   push:
   pull_request:
   release:
