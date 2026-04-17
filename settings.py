@@ -34,6 +34,13 @@ gn_args = {
     "v8_use_external_startup_data": "false",
 }
 
+# On Linux ARM64, use GCC instead of downloaded x86_64 clang
+if platform.system() == "Linux" and platform.machine() == "aarch64":
+    gn_args["is_clang"] = "false"
+    gn_args["treat_warnings_as_errors"] = "false"
+    gn_args["use_sysroot"] = "false"
+    gn_args["use_custom_libcxx"] = "false"
+
 source_files = [
     "Exception.cpp",
     "Platform.cpp",
